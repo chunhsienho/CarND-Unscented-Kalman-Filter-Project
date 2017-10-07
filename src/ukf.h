@@ -102,6 +102,13 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+  
+private:
+    //Seperate the caculation here by Steve
+    void GenerateSigmaPoints(MatrixXd& Xsig_out);
+    void SigmaPointPrediction(MatrixXd& Xsig_out,const double delta_t)
+    void PredictMeanAndCovariance();
+    
 };
 
 #endif /* UKF_H */
