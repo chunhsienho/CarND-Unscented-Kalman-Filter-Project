@@ -108,6 +108,7 @@ private:
     void GenerateSigmaPoints(MatrixXd& Xsig_out);
     void SigmaPointPrediction(MatrixXd& Xsig_out,const double delta_t)
     void PredictMeanAndCovariance();
+    void PredictRadarMeasurement(VectorXd& z_pred,MatrixXd& S,MatrixXd& Zsig)
     
 };
 
