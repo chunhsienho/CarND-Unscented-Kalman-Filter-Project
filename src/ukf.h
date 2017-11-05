@@ -27,6 +27,11 @@ public:
 
   ///* state covariance matrix
   MatrixXd P_;
+    
+  ///* lidar obsercation model (belive state -> lidar estimation state)
+  MatrixXd H_;
+  
+  MatrixXd Zsig;
 
   ///* predicted sigma points matrix
   MatrixXd Xsig_pred_;
@@ -65,8 +70,15 @@ public:
   int n_aug_;
 
   ///* Sigma point spreading parameter
-  double lambda_;
-
+  double lambda;
+    
+  ///
+    
+    double NIS_radar_;
+    
+    double NIS_laser_;
+    
+    double previous_timestamp_;
 
   /**
    * Constructor
@@ -106,9 +118,9 @@ public:
 private:
     //Seperate the caculation here by Steve
     void GenerateSigmaPoints(MatrixXd& Xsig_out);
-    void SigmaPointPrediction(MatrixXd& Xsig_out,const double delta_t)
+    void SigmaPointPrediction(MatrixXd& Xsig_out,const double delta_t);
     void PredictMeanAndCovariance();
-    void PredictRadarMeasurement(VectorXd& z_pred,MatrixXd& S,MatrixXd& Zsig)
+    void PredictRadarMeasurement(VectorXd& z_pred,MatrixXd& S,MatrixXd& Zsig);
     
 };
 
